@@ -1,0 +1,13 @@
+#include <stdosl.h>
+
+surface toon(
+    string textureName = "",
+    vector lightPos = vector(0.0, 0.0, 0.0),
+    output color toon_color = 0
+)
+{
+    float angle = dot(N, normalize(-lightPos));
+    angle = linearstep(0, 1, angle);
+    color textureColor = texture(textureName, angle, 0.0);
+    toon_color = textureColor;
+}

@@ -1,0 +1,9 @@
+shader ToonSampling(
+    vector lightPos = vector(0.0, 0.0, 0.0),
+    output vector gradientPos = vector(0.0, 0.0, 0.0)
+)
+{
+    vector modified_lpos = vector(-lightPos.x, lightPos.y, -lightPos.z);
+    float angle = dot(N, modified_lpos);
+    gradientPos[0] = linearstep(-1, 1, angle);
+}

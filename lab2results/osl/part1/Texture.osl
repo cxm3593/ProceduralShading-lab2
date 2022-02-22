@@ -1,0 +1,12 @@
+#include <stdosl.h>
+
+surface Texture(
+    color texture_color = color(1.0, 1.0, 1.0),
+    color opacity_color = color(1.0, 1.0, 1.0),
+    float roughness = 0.5,
+    output closure color bsdf = 0
+)
+{
+    float opacity = opacity_color.r;
+    bsdf = diffuse(N) * texture_color * opacity + transparent() * (1 - opacity);
+}
